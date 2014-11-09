@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!-- Khi không Click -->
+    <item >
+        <shape>
+            <solid android:color="#009966" />
+
+            <padding 
+                android:left="10dp"
+                android:right="10dp"
+                android:top="5dp"
+                android:bottom="5dp"/>
+            <stroke 
+                android:color="#26f176"
+                android:width="0.5dp"/>
+
+            <corners android:radius="3dp" />
+
+        </shape>
+    </item>
+
+</selector>

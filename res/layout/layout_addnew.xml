@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border_textview"
+            android:drawableLeft="@drawable/basket"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:text="@string/them_mua_sam"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="7dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginTop="0dp"
+            android:background="#CCCCCC" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:gravity="left"
+            android:text="@string/nguoi_mua"
+            android:textColor="#009966"
+            android:textSize="20sp"/>
+
+        <Spinner
+            android:id="@+id/sp_nguoimua"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10sp"
+            android:background="#00CC66" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:gravity="left"
+            android:text="@string/so_tien"
+            android:textColor="#009966"
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/ed_sotien"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/border_edittext"
+            android:gravity="left"
+            android:inputType="numberDecimal"
+            android:textColorHint="#EE0000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:gravity="left"
+            android:text="@string/thanh_vien_lq"
+            android:textColor="#009966"
+            android:textSize="20sp"/>
+        
+
+        <LinearLayout
+            android:id="@+id/layout_for_checkbox"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:gravity="left"
+            android:text="@string/mo_ta"
+            android:textColor="#009966"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/ed_motathemoi"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/border_edittext"
+            android:gravity="left"
+            android:hint="@string/hint"
+            android:textColorHint="#EE0000" />
+
+        <Button
+            android:id="@+id/bt_themmuasam"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/border_button"
+            android:text="@string/them_mua_sam"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5sp"
+            android:textColor="#FFFFFF"           
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+</ScrollView>

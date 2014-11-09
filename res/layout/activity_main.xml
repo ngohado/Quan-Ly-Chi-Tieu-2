@@ -1,0 +1,134 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     android:background="#009966"
+    tools:context="hado.quanlychitieu.MainActivity" >
+
+    <LinearLayout
+        android:id="@+id/layout_dangki_dangnhap"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/border_layout"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/bt_dangnhap1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border_button"
+            android:text="@string/dang_nhap"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/bt_dangki"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/border_btdangki"
+            android:text="@string/dang_ki"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_forgotpw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:text="@string/quen_mat_khau"
+            android:textColor="#ae0000" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_dangnhap"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/border_layout"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/ed_tendangnhap_login"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/border_edittext"
+            android:drawableLeft="@drawable/user_name"
+            android:gravity="left"
+            android:hint="@string/ten_dangnhap" />
+
+        <EditText
+            android:id="@+id/ed_matkhau_login"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/border_edittext"
+            android:drawableLeft="@drawable/pass_word"
+            android:gravity="left"
+            android:hint="@string/mat_khau"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/bt_dangnhap_login"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/border_button"
+            android:text="@string/dang_nhap"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/tv_back_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:text="@string/quay_lai"
+            android:textColor="#ae0000" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/display_progress_index"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#A6000000" >
+
+        <ProgressBar
+            android:id="@+id/loading"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/loading"
+            android:layout_centerHorizontal="true"
+            android:text="@string/loading"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+</RelativeLayout>

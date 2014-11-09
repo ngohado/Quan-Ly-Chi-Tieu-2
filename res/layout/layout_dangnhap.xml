@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:drawableBottom="@drawable/login_logo"
+            android:gravity="center_horizontal"/>
+    
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:gravity="left"
+            android:text="@string/ten_dangnhap"
+            android:textColor="#009966"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    <EditText
+            android:id="@+id/ed_tendangnhap_login"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/border_edittext"
+            android:gravity="left"
+            android:hint="" />
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:gravity="left"
+            android:text="@string/mat_khau"
+            android:textColor="#009966"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    <EditText
+            android:id="@+id/ed_matkhau_login"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/border_edittext"
+            android:gravity="left"
+            android:inputType="textPassword"
+            android:hint="" />
+    <Button 
+            android:id="@+id/bt_dangnhap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center_horizontal"
+            android:drawableLeft="@drawable/log_in"
+            android:background="@drawable/border_button"
+            android:text="@string/dang_nhap"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="25sp"/>
+    <Button 
+            android:id="@+id/bt_dangki_dn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center_horizontal"
+            android:drawableLeft="@drawable/log_in"
+            android:background="@drawable/border_button"
+            android:text="@string/dang_ki"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="25sp"/>
+
+</LinearLayout>

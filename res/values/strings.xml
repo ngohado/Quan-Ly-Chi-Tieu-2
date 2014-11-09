@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Quản Lý Chi Tiêu</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+	<string name="dang_ki">Đăng Kí</string>
+    <string name="ten_phong">Tên phòng</string>
+    <string name="ten_dangnhap">Tên đăng nhập</string>
+    <string name="email">Email</string>
+    <string name="mat_khau">Mật khẩu</string>
+    <string name="mat_khau_again">Nhập lại mật khẩu</string>
+    <string name="mo_ta">Mô tả</string>
+    <string name="quyen_rieng_tu">Quyền riêng tư</string>
+    <string name="fail_ten_dang_nhap">*Tên đăng nhập này đã có .Mời bạn chọn lại tên đăng nhập khác</string>
+    <string name="hint_mota">Giới thiệu sơ qua về phòng của bạn</string>
+    <string name="them_mua_sam">Thêm mới</string>
+    <string name="nguoi_mua">Người mua</string>
+    <string name="so_tien">Số tiền</string>
+    <string name="thanh_vien_lq">Thành viên liên quan</string>
+    <string name="dang_nhap">Đăng Nhập</string>
+    <string name="hint">*</string>
+    <string name="hint_them_thanhvien">Thêm thành viên mới</string>
+    <string name="hoa_don">Hóa đơn</string>
+    <string name="thanh_toan">Thanh toán</string>
+    <string name="chon_tuan">Chọn tuần</string>
+    <string name="nhat_ki">Nhật kí hành động</string>
+    <string name="fail_khongcoketnoimang">Không có kết nối mạng .Bạn vui lòng kiểm tra lại kết nối mạng của thiết bị </string>
+    <string name="fail_khong_day_du_thong_tin">Mời bạn nhập đủ thông tin</string>
+    <string name="fail_coloixayra">Có lỗi xảy ra .Vui lòng thử lại </string>
+    <string name="fail_sai_dangnhap">Sai tên đăng nhập hoặc mật khẩu .Vui lòng kiểm tra lại</string>
+    <string name="fail_saidinhdangEmail">Email của bạn không đúng</string>
+    <string name="fail_du_ki_tu">Tên đăng nhập và Mật khẩu phải có ít nhất 6 kí tự</string>
+    <string name="fail_nhaplaimatkhau_khongchinhxac">Nhập lại mật khẩu không chính xác</string>
+    <string name="successful_dangki">Đăng kí thành công</string>
+    <string name="fail_trung_ten_dangnhap">Tên đăng nhập đã có người đăng kí</string>
+    <string name="spiner_congkhai">Công khai</string>
+    <string name="spiner_bimat">Bí mật</string>
+    <string name="fix">Fix</string>
+    <string name="delete">Delete</string>
+    <string name="open">Open</string>
+    <string name="click_detail">Click để xem chi tiết</string>
+    <string name="week">Tuần </string>
+    <string name="xac_nhan">Xác nhận</string>
+    <string name="dialog_msg_notconected">Hiện không có kết nối mạng .Dữ liệu bạn vừa nhập sẽ gửi khi thiết bị của bạn kết nối mạng .Bạn đồng ý chứ ?</string>
+    <string name="fail_trung_ten_thanhvien">Đã có thành viên .Mời chọn tên khác</string>
+    <string name="loading">Loading</string>
+    <string name="loading_string">Gửi yêu cầu tới máy chủ .Đang tải dữ liệu</string>
+    <string name="quen_mat_khau">Quên mật khẩu ?</string>
+    <string name="quay_lai">Quay lại</string>
+    <string name="load_old_data">Không có kết nối mạng .Có thể dữ liệu đã cũ </string>
+</resources>

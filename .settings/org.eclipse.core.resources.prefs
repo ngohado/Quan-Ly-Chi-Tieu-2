@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+encoding//src/hado/dangki/DangKiActivity.java=UTF-8
+encoding//src/hado/dangki/DangKiAsyncTask.java=UTF-8
+encoding//src/hado/danhsachthanhvien/DanhSachTVActivity.java=UTF-8
+encoding//src/hado/danhsachthanhvien/DanhSachTVAsyncTask.java=UTF-8
+encoding//src/hado/danhsachthanhvien/DanhSachTVFragment.java=UTF-8
+encoding//src/hado/danhsachthanhvien/ExpandableListAdapter.java=UTF-8
+encoding//src/hado/database/MemberDetail.java=UTF-8
+encoding//src/hado/database/MemberInfo.java=UTF-8
+encoding//src/hado/database/MyDatabase.java=UTF-8
+encoding//src/hado/quanlychitieu/DangNhapAsyncTask.java=UTF-8
+encoding//src/hado/quanlychitieu/GetDataAsyncTask.java=UTF-8
+encoding//src/hado/quanlychitieu/MainActivity.java=UTF-8

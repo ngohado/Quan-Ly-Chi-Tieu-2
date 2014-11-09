@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    
+
+    <ScrollView
+        android:id="@+id/crollview1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+       <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        
+        <TextView
+        	android:id="@+id/hado_back"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:drawableLeft="@drawable/icon_back"
+            android:background="#009966"
+            android:gravity="center_vertical"
+            android:textColor="#FFFFFF"
+            android:text="@string/quay_lai"
+            android:textSize="20sp"/>
+               		
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border_textview"
+            android:drawableLeft="@drawable/register"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:text="@string/dang_ki"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="7dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginTop="0dp"
+            android:background="#CCCCCC" />
+        
+        <!-- Phần tên phòng -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:gravity="left"
+            android:text="@string/ten_phong"
+            android:textColor="#009966"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/ed_tenphong"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/border_edittext"
+            android:gravity="left"
+            android:hint="@string/hint" 
+            android:textColorHint="#EE0000"/>
+        
+        <!-- Phần tên đăng nhập -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:gravity="left"
+            android:text="@string/ten_dangnhap"
+            android:textColor="#009966"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/ed_tendangnhap"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/border_edittext"
+            android:gravity="left"
+            android:hint="@string/hint" 
+            android:textColorHint="#EE0000" />
+        
+        <!-- Phần điền Email -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:gravity="left"
+            android:text="@string/email"
+            android:textColor="#009966"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/ed_dkemail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/border_edittext"
+            android:gravity="left"
+            android:hint="@string/hint" 
+            android:textColorHint="#EE0000"
+            android:inputType="textEmailAddress" />
+
+        <!-- Phần điền mật khẩu -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:gravity="left"
+            android:text="@string/mat_khau"
+            android:textColor="#009966"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/ed_matkhau"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/border_edittext"
+            android:ems="10"
+            android:gravity="left"
+            android:inputType="textPassword"
+            android:hint="@string/hint" 
+            android:textColorHint="#EE0000" >
+
+            <requestFocus />
+        </EditText>
+        
+		<!-- Phần điền lại mật khẩu -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:gravity="left"
+            android:text="@string/mat_khau_again"
+            android:textColor="#009966"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/ed_matkhau_again"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/border_edittext"
+            android:ems="10"
+            android:gravity="left"
+            android:inputType="textPassword" 
+            android:hint="@string/hint" 
+            android:textColorHint="#EE0000">
+
+            <requestFocus />
+        </EditText>
+
+        <!-- Phần điền mô tả -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:gravity="left"
+            android:text="@string/mo_ta"
+            android:textColor="#009966"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/ed_mota"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/border_edittext"
+            android:gravity="left"
+            android:hint="@string/hint_mota" />
+        <!-- Phần chọn chế độ cho phòng -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:gravity="left"
+            android:text="@string/quyen_rieng_tu"
+            android:textColor="#009966"
+            android:textSize="20sp"/>
+        <Spinner
+            android:id="@+id/sp_chedo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10sp" />
+        <!-- Button DK -->
+        <Button 
+            android:id="@+id/bt_dangki"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/border_button"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5sp"
+            android:text="@string/dang_ki"
+            android:textColor="#FFFFFF"            
+            android:textSize="20sp"/>
+        
+    </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/display_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#A6000000" >
+       
+       <ProgressBar android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            style="?android:attr/progressBarStyle"/>
+
+       <TextView
+           android:layout_below="@+id/loading"
+           android:layout_centerHorizontal="true"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/loading"
+           android:textStyle="bold" 
+           android:textColor="#FFFFFF"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
