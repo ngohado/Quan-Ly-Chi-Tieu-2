@@ -7,8 +7,7 @@
 	<uses-permission android:name="android.permission.INTERNET"/>
 	
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="21" />
+        android:minSdkVersion="8"/>
 
     <application
         android:allowBackup="true"
@@ -26,6 +25,8 @@
         </activity>
         <activity android:name="hado.dangki.DangKiActivity"></activity>
         <activity android:name="hado.danhsachthanhvien.DanhSachTVActivity"></activity>
+        <activity android:name="hado.menu.MenuActivity"></activity>
+        <activity android:name="hado.shopping.ShoppingActivity"></activity>
     </application>
 
 </manifest>

@@ -115,20 +115,19 @@ public class MyDatabase {
 		
 		return arr ;
 	}
+	
 	/**
 	 * Phương thức trả về danh sách thông tin của thành viên trong phòng
 	 * @return
 	 */
-	public ArrayList<MemberInfo> getDataMember(String week){
+	public ArrayList<MemberInfo> getDataMember(){
 		ArrayList<MemberInfo> arrMemberInfo = new ArrayList<MemberInfo>();
 		/*Lấy dữ tất cả dữ liệu trong bảng thành viên*/
-		String columns[] = new String[]{COLUM_FIRSTNAME,COLUM_LASTNAME,COLUM_FULLNAME} ;
+		String columns[] = new String[]{COLUM_FULLNAME} ;
 		Cursor c = db.query(TABLE_MEMBER, columns, null, null, null, null, null);
 		
 		/*Gán ID của các trường trong bảng*/
 		int rowFullName = c.getColumnIndex(COLUM_FULLNAME);
-		int rowFirstName = c.getColumnIndex(COLUM_FIRSTNAME);
-		int rowLastName = c.getColumnIndex(COLUM_LASTNAME);
 		
 		/*Duyệt tất cả các phần tử để gán vào trong ArrayList*/
 		for(c.moveToFirst();!c.isAfterLast();c.moveToNext()){
@@ -136,28 +135,15 @@ public class MyDatabase {
 			
 			/*Gán thông tin họ tên của thành viên*/
 			String fullName = c.getString(rowFullName) ;
-			String firstName = c.getString(rowFirstName);			
-			String lastName = c.getString(rowLastName);
 			a.setFullName(fullName);
-			a.setFirstName(firstName);
-			a.setLastName(lastName);
-			
-			/*Gọi đến phương thức getDataMemberDetail để lấy thông tin chi tiết về thành viên*/
-			try {
-				MemberDetail memberDetail = new MemberDetail();
-				getDataMemberDetail(week) ;
-				a.setMemberDtail(memberDetail);
-			} catch (Exception e) {
-				
-			}
-			
+					
 			/*Gán từng Object MemberInfo vào ArrayList*/
-			arrMemberInfo.add(a);
-			
+			arrMemberInfo.add(a);			
 		}
 		
 		return arrMemberInfo ;
 	}
+	
 	/**
 	 *Phương thức thêm 1 thành viên vào trong Database 
 	 * @param a
@@ -170,6 +156,7 @@ public class MyDatabase {
 		
 		db.insert(TABLE_MEMBER, null, c);
 	}
+	
 	/**
 	 * Phương thức thêm danh sách member vào trong database
 	 * @param arr
@@ -187,6 +174,7 @@ public class MyDatabase {
 			db.insert(TABLE_MEMBER, null, c);
 		}
 	}
+	
 	/**
 	 * Phương thức thêm danh sách memberdetail vào database
 	 * @param arr
@@ -205,6 +193,7 @@ public class MyDatabase {
 			db.insert(TABLE_MEMBERDETAIL, null, cv);
 		}
 	}
+	
 	/**
 	 * Phương thức thêm danh sách invoice vào database
 	 * @param arr
@@ -225,6 +214,39 @@ public class MyDatabase {
 			db.insert(TABLE_INVOICE, null, cv);
 		}
 	}
+	
+	/**
+	 * Phương thức thêm 1 hóa đơn vào trong database
+	 * @param a
+	 */
+	public void creatSimpleInvoice(Invoice a){
+		
+		ContentValues cv = new ContentValues();
+		cv.put(COLUM_WEEK, a.getWeek());
+		cv.put(COLUM_MEMBERBOUGHT, a.getMemberBought());
+		cv.put(COLUM_TIMEBOUGHT, a.getTimeBought());
+		cv.put(COLUM_MONEY, a.getMoney());
+		cv.put(COLUM_MEMBERLQ, a.getMemberLQ());
+		cv.put(COLUM_DESCRIPTION, a.getDescription());
+		
+		db.insert(TABLE_INVOICE, null, cv);
+	}
+	
+	/**
+	 * trả về số tuần mới nhất (lớn nhất)
+	 */
+	public String newWeek(){
+		String newWeek = "" ;
+		String colums[]= new String[]{COLUM_WEEK} ;
+		
+		Cursor c = db.query(TABLE_MEMBERDETAIL,colums, null, null, null, null, null);
+		
+		int rowWeek = c.getColumnIndex(COLUM_WEEK);
+		c.moveToLast();
+		newWeek = c.getString(rowWeek);
+		return newWeek ;
+	}
+	
 	/**
 	 * Lớp có tác dụng tạo or mở file ,tạo các bảng trong Database
 	 * @author Hado

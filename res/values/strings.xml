@@ -33,7 +33,6 @@
     <string name="fail_du_ki_tu">Tên đăng nhập và Mật khẩu phải có ít nhất 6 kí tự</string>
     <string name="fail_nhaplaimatkhau_khongchinhxac">Nhập lại mật khẩu không chính xác</string>
     <string name="successful_dangki">Đăng kí thành công</string>
-    <string name="fail_trung_ten_dangnhap">Tên đăng nhập đã có người đăng kí</string>
     <string name="spiner_congkhai">Công khai</string>
     <string name="spiner_bimat">Bí mật</string>
     <string name="fix">Fix</string>
@@ -42,11 +41,13 @@
     <string name="click_detail">Click để xem chi tiết</string>
     <string name="week">Tuần </string>
     <string name="xac_nhan">Xác nhận</string>
-    <string name="dialog_msg_notconected">Hiện không có kết nối mạng .Dữ liệu bạn vừa nhập sẽ gửi khi thiết bị của bạn kết nối mạng .Bạn đồng ý chứ ?</string>
     <string name="fail_trung_ten_thanhvien">Đã có thành viên .Mời chọn tên khác</string>
-    <string name="loading">Loading</string>
-    <string name="loading_string">Gửi yêu cầu tới máy chủ .Đang tải dữ liệu</string>
     <string name="quen_mat_khau">Quên mật khẩu ?</string>
     <string name="quay_lai">Quay lại</string>
     <string name="load_old_data">Không có kết nối mạng .Có thể dữ liệu đã cũ </string>
+    <string name="dang_dang_ki">Đang đăng kí</string>
+    <string name="dang_dang_nhap">Đang đăng nhập</string>
+    <string name="dang_tai_du_lieu">Đang tải dữ liệu</string>
+    <string name="dang_gui_yeu_cau">Đang gửi yêu cầu</string>
+    <string name="them_thanh_vien_thanh_cong">Thêm mới thành công</string>
 </resources>

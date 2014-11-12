@@ -1,18 +1,18 @@
 package hado.quanlychitieu;
 
+import hado.config.WebServiceAPIConfig;
+import hado.database.Invoice;
+import hado.database.MemberDetail;
+import hado.database.MemberInfo;
+import hado.database.MyDatabase;
+import hado.menu.MenuActivity;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
-
-import hado.config.WebServiceAPIConfig;
-import hado.danhsachthanhvien.DanhSachTVActivity;
-import hado.database.Invoice;
-import hado.database.MemberDetail;
-import hado.database.MemberInfo;
-import hado.database.MyDatabase;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -28,7 +28,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.view.View;
 
 public class GetDataAsyncTask extends AsyncTask<Void, Void, Void> {
@@ -298,11 +297,7 @@ public class GetDataAsyncTask extends AsyncTask<Void, Void, Void> {
 		// TODO Auto-generated method stub
 		super.onPostExecute(result);
 		contextfa.findViewById(R.id.display_progress_index).setVisibility(View.GONE);
-		Intent i = new Intent(contextfa, DanhSachTVActivity.class);
-		Bundle b = new Bundle();
-		b.putString("DATA", "MENU");
-		b.putString("WEEK", "Tuần 1");
-		i.putExtra("DATA", b);
+		Intent i = new Intent(contextfa, MenuActivity.class);
 		contextfa.finish();
 		contextfa.startActivity(i);
 	}

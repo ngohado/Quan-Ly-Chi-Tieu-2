@@ -5,16 +5,20 @@ import hado.quanlychitieu.R;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -24,15 +28,13 @@ import android.widget.Toast;
  * @author Hado
  * 
  */
-public class DangKiActivity extends Activity {
+public class DangKiActivity extends ActionBarActivity {
 	EditText edRoomName;
 	EditText edUserName;
 	EditText edEmail;
 	EditText edPassword;
 	EditText edPasswordAgain;
 	EditText edDescribe;
-	
-	TextView tvBack ;
 	
 	Spinner spMode;
 	ArrayList<String> arrList = new ArrayList<String>();
@@ -46,18 +48,11 @@ public class DangKiActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_dangki);
+		customActionBar();
+		
 		disableProgress();;
 		
 		getWigetsId();
-		
-		tvBack.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
 		
 		btRegister.setOnClickListener(new View.OnClickListener() {
 
@@ -72,6 +67,7 @@ public class DangKiActivity extends Activity {
 						String strDescribe = edDescribe.getText().toString().trim();
 						
 						new DangKiAsyncTask(DangKiActivity.this).execute(strRoomName,strUserName,strPW,strEmail,strDescribe,modeSelected);
+						
 					}
 				} else {
 					showToast(getString(R.string.fail_khongcoketnoimang));
@@ -79,6 +75,7 @@ public class DangKiActivity extends Activity {
 
 			}
 		});
+		
 		/*Xử lý khi chọn các item trong Spiner*/
 		spMode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -107,9 +104,6 @@ public class DangKiActivity extends Activity {
 		edPassword = (EditText) findViewById(R.id.ed_matkhau);
 		edPasswordAgain = (EditText) findViewById(R.id.ed_matkhau_again);
 		edDescribe = (EditText) findViewById(R.id.ed_mota);
-
-		tvBack = (TextView) findViewById(R.id.hado_back);
-		
 		spMode = (Spinner) findViewById(R.id.sp_chedo);
 		arrList.add(getString(R.string.spiner_congkhai));
 		arrList.add(getString(R.string.spiner_bimat));
@@ -158,6 +152,11 @@ public class DangKiActivity extends Activity {
 		}
 		return false;
 	}
+	
+	/**
+	 * Kiểm tra xem có kết nối mạng không ?
+	 * @return
+	 */
 	public boolean isConected(){
 		ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
 		NetworkInfo netwInfo = connMgr.getActiveNetworkInfo();
@@ -166,12 +165,14 @@ public class DangKiActivity extends Activity {
 		} else
 			return false;
 	}
+	
 	/**
 	 * Phương thức hiển thị thông báo cho người dung lên Toast
 	 */
 	public void showToast(String str){
 		Toast.makeText(DangKiActivity.this, str, Toast.LENGTH_LONG).show();
 	}
+	
 	/**
 	 * Phương thức kiểm tra xem mục Email người dùng có đúng dạng Email không ?
 	 */
@@ -180,7 +181,36 @@ public class DangKiActivity extends Activity {
 		return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches() ;
 	}
 	
+	/**
+	 * Tắt layout loading
+	 */
 	public void disableProgress(){
 		findViewById(R.id.display_progress).setVisibility(View.GONE);
+	}
+	
+	public void customActionBar(){
+		ActionBar ac = getSupportActionBar();
+		ac.setDisplayHomeAsUpEnabled(true);
+		ac.setTitle(R.string.quay_lai);
+		ColorDrawable color = new ColorDrawable(Color.parseColor("#009966"));
+		ac.setBackgroundDrawable(color);
+		
+	}
+	
+	/**
+	 * Xử lý button back của actionbar
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		switch (item.getItemId()) {
+		case android.R.id.home:
+				finish();
+			break;
+
+		default:
+			break;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }

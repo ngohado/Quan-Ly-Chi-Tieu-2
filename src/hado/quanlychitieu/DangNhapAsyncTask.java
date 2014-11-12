@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -137,7 +138,8 @@ public class DangNhapAsyncTask extends AsyncTask<String, String, Boolean> {
 		// TODO Auto-generated method stub
 		super.onPostExecute(result);
 		if(result){ // true
-			
+			TextView tv = (TextView) contextfa.findViewById(R.id.loading_dangnhap);
+			tv.setText(contextfa.getString(R.string.dang_tai_du_lieu));
 			new GetDataAsyncTask(contextfa).execute();
 			onCancelled();
 		}else{ // false

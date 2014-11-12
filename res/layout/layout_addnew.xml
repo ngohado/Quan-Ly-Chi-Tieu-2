@@ -1,125 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/border_textview"
-            android:drawableLeft="@drawable/basket"
-            android:gravity="center"
-            android:textColor="#FFFFFF"
-            android:text="@string/them_mua_sam"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="7dp"
-            android:layout_marginLeft="9dp"
-            android:layout_marginTop="0dp"
-            android:background="#CCCCCC" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:gravity="left"
-            android:text="@string/nguoi_mua"
-            android:textColor="#009966"
-            android:textSize="20sp"/>
-
-        <Spinner
-            android:id="@+id/sp_nguoimua"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="10sp"
-            android:background="#00CC66" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:gravity="left"
-            android:text="@string/so_tien"
-            android:textColor="#009966"
-            android:textSize="20sp"/>
-        <EditText
-            android:id="@+id/ed_sotien"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/border_edittext"
-            android:gravity="left"
-            android:inputType="numberDecimal"
-            android:textColorHint="#EE0000" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:gravity="left"
-            android:text="@string/thanh_vien_lq"
-            android:textColor="#009966"
-            android:textSize="20sp"/>
-        
+        android:layout_height="match_parent" >
 
         <LinearLayout
-            android:id="@+id/layout_for_checkbox"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
             android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_textview"
+                android:drawableLeft="@drawable/basket"
+                android:gravity="center"
+                android:text="@string/them_mua_sam"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="7dp"
+                android:layout_marginLeft="9dp"
+                android:layout_marginTop="0dp"
+                android:background="#CCCCCC" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:gravity="left"
+                android:text="@string/nguoi_mua"
+                android:textColor="#009966"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/sp_nguoimua"
+                style="android:spinnerSpiner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10sp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:gravity="left"
+                android:text="@string/so_tien"
+                android:textColor="#009966"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/ed_sotien"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border_edittext"
+                android:gravity="left"
+                android:hint="@string/hint"
+                android:inputType="numberDecimal"
+                android:textColorHint="#EE0000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:gravity="left"
+                android:text="@string/thanh_vien_lq"
+                android:textColor="#009966"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/checkbox"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:gravity="left"
+                android:text="@string/mo_ta"
+                android:textColor="#009966"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/ed_motathemoi"
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border_edittext"
+                android:gravity="left"
+                android:hint="@string/hint"
+                android:textColorHint="#EE0000" />
+
+            <Button
+                android:id="@+id/bt_themmuasam"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5sp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/border_button"
+                android:text="@string/them_mua_sam"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
         </LinearLayout>
+    </ScrollView>
+    <RelativeLayout
+        android:id="@+id/display_progress_addnew"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#A6000000" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:gravity="left"
-            android:text="@string/mo_ta"
-            android:textColor="#009966"
-            android:textSize="20sp"/>
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="70dp"
+            android:background="@drawable/border_layout"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true" >
 
-        <EditText
-            android:id="@+id/ed_motathemoi"
-            android:layout_width="fill_parent"
-            android:layout_height="100dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/border_edittext"
-            android:gravity="left"
-            android:hint="@string/hint"
-            android:textColorHint="#EE0000" />
+            <ProgressBar
+                android:layout_marginLeft="10dp"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/bt_themmuasam"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/border_button"
-            android:text="@string/them_mua_sam"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5sp"
-            android:textColor="#FFFFFF"           
-            android:textSize="20sp"/>
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="#FFFFFF"
+                android:text="@string/dang_tai_du_lieu"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </RelativeLayout>
 
-</ScrollView>
+</RelativeLayout>

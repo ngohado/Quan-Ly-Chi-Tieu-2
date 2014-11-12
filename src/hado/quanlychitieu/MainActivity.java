@@ -1,6 +1,7 @@
 package hado.quanlychitieu;
 
 import hado.dangki.DangKiActivity;
+import hado.shopping.ShoppingActivity;
 
 import java.util.concurrent.ExecutionException;
 
@@ -30,6 +31,8 @@ public class MainActivity extends Activity {
 	
 	TextView tvForgotPw ;
 	TextView tvBack ;
+	TextView tvNotify ;
+	
 	
 	
 	@Override
@@ -48,7 +51,7 @@ public class MainActivity extends Activity {
 				findViewById(R.id.layout_dangki_dangnhap).setVisibility(View.VISIBLE);
 				layoutLoginRegister();
 			} catch (Exception e) {
-				showToast("0");
+				
 			}
 		} else{ //isFirst = false
 			if(isConnected()){ //có kết nối
@@ -56,6 +59,9 @@ public class MainActivity extends Activity {
 				
 			}else{ // không có kết nối mạng .chuyển về menu
 				showToast(R.string.load_old_data);
+				Intent i = new Intent(MainActivity.this, ShoppingActivity.class);
+				startActivity(i);
+				
 			}
 		}
 				
@@ -74,6 +80,7 @@ public class MainActivity extends Activity {
 		
 		tvForgotPw = (TextView) findViewById(R.id.tv_forgotpw);
 		tvBack = (TextView) findViewById(R.id.tv_back_login);
+		tvNotify = (TextView) findViewById(R.id.loading_dangnhap);
 	}
 	
 	/**
@@ -159,7 +166,7 @@ public class MainActivity extends Activity {
 		DangNhapAsyncTask asyncTask = new DangNhapAsyncTask(MainActivity.this);
 		asyncTask.execute(uname,passw);
 		if(asyncTask.getStatus() == AsyncTask.Status.RUNNING){
-			showToast(R.string.loading_string);
+			tvNotify.setText(getString(R.string.dang_dang_nhap));
 			findViewById(R.id.display_progress_index).setVisibility(View.VISIBLE);
 		}
 	}
@@ -171,7 +178,7 @@ public class MainActivity extends Activity {
 		GetDataAsyncTask getData = new GetDataAsyncTask(MainActivity.this);
 		getData.execute();
 		if(getData.getStatus() == AsyncTask.Status.RUNNING){
-			showToast(R.string.loading_string);
+			tvNotify.setText(getString(R.string.dang_tai_du_lieu));
 			findViewById(R.id.display_progress_index).setVisibility(View.VISIBLE);
 		}
 		

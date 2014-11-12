@@ -104,6 +104,7 @@ public class DangKiAsyncTask extends AsyncTask<String, String, Void>{
 				
 		return null;
 	}
+	
 	/**
 	 * Phương thức update giao diện cho Activity
 	 */
@@ -120,10 +121,10 @@ public class DangKiAsyncTask extends AsyncTask<String, String, Void>{
 			contexfa.findViewById(R.id.display_progress).setVisibility(View.GONE);
 		}
 		if(values[0].equalsIgnoreCase("loading")){
-			showToast(contexfa.getString(R.string.loading_string));
 			contexfa.findViewById(R.id.display_progress).setVisibility(View.VISIBLE);
 		}
 	}
+	
 	/**
 	 * Phương thức hiển thị thông báo cho người dung lên Toast
 	 */
@@ -132,5 +133,11 @@ public class DangKiAsyncTask extends AsyncTask<String, String, Void>{
 	}
 	public void showToastShort(String str) {
 		Toast.makeText(contexfa, str, Toast.LENGTH_LONG).show();
+	}
+	@Override
+	protected void onPostExecute(Void result) {
+		// TODO Auto-generated method stub
+		super.onPostExecute(result);
+		
 	}
 }

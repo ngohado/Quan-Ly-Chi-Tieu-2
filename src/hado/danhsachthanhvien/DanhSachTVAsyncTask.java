@@ -20,9 +20,11 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.view.View;
 import android.widget.Toast;
 
 /**
@@ -32,13 +34,13 @@ import android.widget.Toast;
  */
 public class DanhSachTVAsyncTask extends AsyncTask<MemberInfo, String, Void>{
 	ArrayList<MemberInfo> arrMemberInfo = new ArrayList<MemberInfo>();
-	Context contextfa ;
+	Activity contextfa ;
 	
 	/**
 	 * Lớp contructor lấy context từ lớp DanhSachTVActivity để cập nhật giao diện
 	 * @param a
 	 */
-	public DanhSachTVAsyncTask(Context a) {
+	public DanhSachTVAsyncTask(Activity a) {
 		// TODO Auto-generated constructor stub
 		this.contextfa = a ;
 	}
@@ -84,14 +86,14 @@ public class DanhSachTVAsyncTask extends AsyncTask<MemberInfo, String, Void>{
 				
 				JSONObject jsonO = new JSONObject(textJson);
 				String result = jsonO.getString("result");
-				String error = jsonO.getString("error");
 				
 				/*Nếu giá trị result trả về là true thì có nghĩa là không có thành viên nào trùng tên
 				 * và đã update vào Server sau đó mở Database để cập nhật lại dữ liệu*/
 				if(result.equalsIgnoreCase("true")){					
 					refreshData(memberInfo);
+					publishProgress(contextfa.getString(R.string.them_thanh_vien_thanh_cong));
 				} else {
-					publishProgress(error);
+					publishProgress(contextfa.getString(R.string.fail_coloixayra));
 				}
 			}
 		} catch (Exception e) {
@@ -118,11 +120,13 @@ public class DanhSachTVAsyncTask extends AsyncTask<MemberInfo, String, Void>{
 		// TODO Auto-generated method stub
 		super.onProgressUpdate(values);
 		Toast.makeText(contextfa, values[0], Toast.LENGTH_SHORT).show();
-		try {
-			DanhSachTVActivity.adapter.notifyDataSetChanged();
-		} catch (Exception e) {
-			Toast.makeText(contextfa,"Fail of Adapter", Toast.LENGTH_LONG).show();
-		}
+		
 	}
 
+	@Override
+	protected void onPostExecute(Void result) {
+		// TODO Auto-generated method stub
+		super.onPostExecute(result);
+		contextfa.findViewById(R.id.display_progress_listmem).setVisibility(View.GONE);
+	}
 }

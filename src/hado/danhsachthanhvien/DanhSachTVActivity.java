@@ -71,6 +71,7 @@ public class DanhSachTVActivity extends Activity{
 		imgDel = (ImageView) findViewById(R.id.img_delmember);
 		imgFix = (ImageView) findViewById(R.id.img_fixmember);
 	}
+	
 	/**
 	 * Lấy dữ liệu từ Database theo tuần truyền vào
 	 */
@@ -87,6 +88,7 @@ public class DanhSachTVActivity extends Activity{
 			edAddNew.setEnabled(false);
 		}
 		week = bundle.getString("WEEK");
+		
 		/*Lấy dữ liệu cho danh sách thành viên từ database theo tuần " week " */
 		try {
 			db.open();
@@ -99,6 +101,10 @@ public class DanhSachTVActivity extends Activity{
 		}
 		tvWeek.setText("  "+week);
 	}
+	
+	/**
+	 * phương thức xử lý khi click vào thêm thành viên mới
+	 */
 	public void listenClick(){
 		imgAdd.setOnClickListener(new View.OnClickListener() {
 			
@@ -149,6 +155,8 @@ public class DanhSachTVActivity extends Activity{
 		} else
 			return false;
 	}
+	
+	
 	/**
 	 * Phương thức hiển thị thông báo lên Dialog
 	 * @param title
@@ -181,6 +189,11 @@ public class DanhSachTVActivity extends Activity{
 		
 		dialog.create().show();
 	}
+	
+	/**
+	 * Phương thức kiểm tra tên thêm vào có bị trùng với những
+	 * thành viên khác trong phòng không 
+	 */
 	public boolean isCoincidenceName(String fullName){
 		for(int i = 0 ; i<arrMemberInfo.size() ; i++){
 			if(fullName.equalsIgnoreCase(arrMemberInfo.get(i).getFullName().trim())){
