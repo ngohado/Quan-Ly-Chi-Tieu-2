@@ -11,9 +11,6 @@ import java.util.Calendar;
 
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
@@ -55,7 +52,7 @@ public class ShoppingActivity extends ActionBarActivity{
 
 	ArrayList<MemberInfo> arrMem = new ArrayList<MemberInfo>();
 	
-	String week = "" ;
+	String week = "Tuần 2" ;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -173,46 +170,38 @@ public class ShoppingActivity extends ActionBarActivity{
 		spMemB.setAdapter(adapterSP);
 		
 		/*Lấy tuần được gửi về*/
-		Intent result = getIntent();
-		week = result.getStringExtra("WEEK");
+//		Intent result = getIntent();
+//		week = result.getStringExtra("WEEK");
 	}
 	
 	public void requestTask(String money ,String description ,String memberLQ){
 		Calendar cal = Calendar.getInstance(); // lấy thời gian hiện tại của hệ thống
 		SimpleDateFormat sdf = null ;
 		
-		String strTime1 = "yyyy-MM-dd HH:mm:ss" ;
 		String strTime2 = "HH:mm dd-MM-yyyy" ;
 		
 		sdf = new SimpleDateFormat(strTime2);
 		String timeDatabase = sdf.format(cal.getTime());
-		
-		sdf = new SimpleDateFormat(strTime1);
-		String timeServer = sdf.format(cal.getTime());
-		
-		Invoice invoice = new Invoice();
-		invoice.setWeek(week);
-		invoice.setMemberBought(memberSelected);
-		invoice.setMoney(Float.parseFloat(money));
-		invoice.setMemberLQ(memberLQ);
-		invoice.setDescription(description);
-		invoice.setTimeBought(timeServer);
-		
-		Invoice invoice1 = new Invoice();
-		invoice1.setWeek(week);
-		invoice1.setMemberBought(memberSelected);
-		invoice1.setMoney(Float.parseFloat(money));
-		invoice1.setMemberLQ(memberLQ);
-		invoice1.setDescription(description);
-		invoice1.setTimeBought(timeDatabase);
-		
+		String idWeek = "" ;
+		String idMemberLQ = "" ;
+		String idMem[] = null;
 		try {
 			db.open();
-			db.creatSimpleInvoice(invoice1);
-			db.close();			
+			idWeek = db.getIdWeek(week);
+			idMemberLQ = db.getIdMember(memberLQ);
+			idMem = db.getIdMember(memberSelected).split(",");
+			db.close();
 		} catch (Exception e) {
-			
+			// TODO: handle exception
 		}
+		
+		Invoice invoice = new Invoice();
+		invoice.setWeek(idWeek);
+		invoice.setMemberBought(idMem[0]);
+		invoice.setMoney(Float.parseFloat(money));
+		invoice.setMemberLQ(idMemberLQ);
+		invoice.setTimeBought(timeDatabase);
+		invoice.setDescription(description);
 		
 		ShoppingAsyncTask task = new ShoppingAsyncTask(ShoppingActivity.this);
 		task.execute(invoice);
@@ -277,6 +266,7 @@ public class ShoppingActivity extends ActionBarActivity{
 		// TODO Auto-generated method stub
 		super.onResume();
 		customActionBar();
+		findViewById(R.id.display_progress_addnew).setVisibility(View.GONE);
 	}
 	
 }

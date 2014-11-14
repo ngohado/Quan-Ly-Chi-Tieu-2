@@ -29,8 +29,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.view.View;
+import android.widget.Toast;
 
-public class GetDataAsyncTask extends AsyncTask<Void, Void, Void> {
+public class GetDataAsyncTask extends AsyncTask<Void, String, Void> {
+	String COLUM_ID = "ID";
 	String COLUM_WEEK = "WEEK";
 	String COLUM_MEMBERBOUGHT = "MEMBERBOUGHT";
 	String COLUM_TIMEBOUGHT = "TIMEBOUGHT";
@@ -62,6 +64,7 @@ public class GetDataAsyncTask extends AsyncTask<Void, Void, Void> {
 		/*Lấy file SharedPreferences để get username và password*/
 		SharedPreferences pre = contextfa.getSharedPreferences("data_status",
 				Context.MODE_PRIVATE);
+		
 		/*Get dữ liệu memberDetail*/
 		try {
 			/*Gán yêu cầu task ,username và passwowrd vào namevaluepair để tí gán vào httpPost gửi lên webService*/
@@ -92,7 +95,10 @@ public class GetDataAsyncTask extends AsyncTask<Void, Void, Void> {
 				while ((line = bufferedR.readLine()) != null) {
 					textJson += line;
 				}
-				
+//				SharedPreferences p = contextfa.getSharedPreferences("test2", Context.MODE_PRIVATE);
+//				SharedPreferences.Editor editor = p.edit();
+//				editor.putString("t", textJson);
+//				editor.commit();
 				/*Gán đoạn text dữ liệu Json vào Object Json để đọc dữ liệu trong*/
 				JSONObject jsonO = new JSONObject(textJson);
 				
@@ -143,6 +149,7 @@ public class GetDataAsyncTask extends AsyncTask<Void, Void, Void> {
 		} catch (Exception e) {
 			
 		}
+		
 		/*
 		 * Get dữ liệu chi tiết hóa đơn (invoice) từ server và ghi vào database
 		 * các comment tương tự như trên
@@ -165,7 +172,10 @@ public class GetDataAsyncTask extends AsyncTask<Void, Void, Void> {
 				while((line = bufferedR.readLine()) != null){
 					textJson += line ;
 				}
-				
+//				SharedPreferences p = contextfa.getSharedPreferences("test", Context.MODE_PRIVATE);
+//				SharedPreferences.Editor editor = p.edit();
+//				editor.putString("t", textJson);
+//				editor.commit();
 				JSONObject jsonO = new JSONObject(textJson);
 				String result = jsonO.getString("result");
 				
@@ -231,6 +241,11 @@ public class GetDataAsyncTask extends AsyncTask<Void, Void, Void> {
 				while ((line = bufferedR.readLine()) != null) {
 					textJson += line ;
 				}
+//				
+//				SharedPreferences p = contextfa.getSharedPreferences("test3", Context.MODE_PRIVATE);
+//				SharedPreferences.Editor editor = p.edit();
+//				editor.putString("t", textJson);
+//				editor.commit();
 				JSONObject jsonO = new JSONObject(textJson);
 				String result = jsonO.getString("result");
 				if(result.equalsIgnoreCase("true")){
@@ -240,8 +255,10 @@ public class GetDataAsyncTask extends AsyncTask<Void, Void, Void> {
 						while(!jsonO.isNull(""+i)){
 							JSONObject a = jsonO.getJSONObject(""+i);
 							MemberInfo mem = new MemberInfo();
+							String id = a.getString(COLUM_ID);
 							String firstName = a.getString(COLUM_FIRSTNAME);
 							String lastName = a.getString(COLUM_LASTNAME);
+							mem.setId(id);
 							mem.setFirstName(firstName);
 							mem.setLastName(lastName);
 							String fullName = lastName + " " + firstName ;
@@ -268,6 +285,57 @@ public class GetDataAsyncTask extends AsyncTask<Void, Void, Void> {
 		} catch (Exception e) {
 			
 		}
+		
+		/**
+		 * Lấy dữ liệu tuần 
+		 */
+		try {
+			List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>();
+			nameValuePair.add(new BasicNameValuePair("task", "getweek"));
+			nameValuePair.add(new BasicNameValuePair("username", pre.getString("username", "")));
+			nameValuePair.add(new BasicNameValuePair("password", pre.getString("password", "")));
+			
+			httpPost.setEntity(new UrlEncodedFormEntity(nameValuePair));
+			HttpResponse httpResponse = httpClient.execute(httpPost);
+			
+			InputStream inputStream = httpResponse.getEntity().getContent();
+			BufferedReader bufferedR = new BufferedReader(new InputStreamReader(inputStream));
+			String line = "" ;
+			String textJson = "" ;
+			while((line = bufferedR.readLine()) != null ){
+				textJson += line ;
+			}
+			
+			JSONObject jsonO = new JSONObject(textJson);
+			String result = jsonO.getString("result");
+			if(result.equalsIgnoreCase("true")){
+				int i = 0 ;
+				try {
+					ArrayList<String> week = new ArrayList<String>() ;
+					ArrayList<String> idWeek = new ArrayList<String>();
+					while(!jsonO.isNull(""+i)){
+						JSONObject a = jsonO.getJSONObject(""+i);
+						week.add(a.getString("week"));
+						idWeek.add(a.getString("id"));
+						
+						i++ ;
+					}
+					
+					try {
+						MyDatabase db = new MyDatabase(contextfa);
+						db.open();
+						db.creatDataWeek(week, idWeek);
+						db.close();
+					} catch (Exception e) {
+						
+					}
+				} catch (Exception e) {
+					
+				}
+			}
+		} catch (Exception e) {
+			
+		}
 		return null;
 	}
 	
@@ -289,6 +357,12 @@ public class GetDataAsyncTask extends AsyncTask<Void, Void, Void> {
 		
 	}
 	
+	@Override
+	protected void onProgressUpdate(String... values) {
+		// TODO Auto-generated method stub
+		super.onProgressUpdate(values);
+		Toast.makeText(contextfa, values[0], Toast.LENGTH_SHORT).show();
+	}
 	/**
 	 * Phương thức khi thực hiện xong sẽ chuyển tắt activity và chuyển về Menu
 	 */

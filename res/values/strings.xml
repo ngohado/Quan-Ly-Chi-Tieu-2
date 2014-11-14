@@ -50,4 +50,13 @@
     <string name="dang_tai_du_lieu">Đang tải dữ liệu</string>
     <string name="dang_gui_yeu_cau">Đang gửi yêu cầu</string>
     <string name="them_thanh_vien_thanh_cong">Thêm mới thành công</string>
+    <string name="new_shopping">+</string>
+    <string name="thanh_vien">Thành viên</string>
+    <string name="huong_dan">Hướng dẫn</string>
+    <string name="hd_1">• Các thành viên dùng &quot;tên đăng nhập&quot; và &quot;mật khẩu&quot; để vào phòng mình</string>
+    <string name="hd_2">• Tạo các thành viên trong phòng</string>
+    <string name="hd_3">• Tạo một tuần mới để bắt đầu thêm mua sắm</string>
+    <string name="hd_4">• Ấn vào nút + màu xanh để thêm mua sắm vào tuần mới nhất</string>
+    <string name="hd_5">• Kéo sang 2 bên để xem các mục</string>
+    <string name="hd_6">• Ở mục hóa đơn .Bạn chọn tuần và nhấn vào thanh toán để xem số tiền các thành viên đã dùng trong tuần đó</string>
 </resources>

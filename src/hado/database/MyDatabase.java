@@ -18,10 +18,11 @@ import android.widget.Toast;
  */
 public class MyDatabase {
 	private static final String TABLE_INVOICE = "INVOICE";
+	private static final String TABLE_WEEK = "WEEK";
 	private static final String TABLE_MEMBER = "MEMBER";
 	private static final String TABLE_MEMBERDETAIL = "MEMBERDETAIL";
 
-	private static final String COLUM_STT = "STT";
+	private static final String COLUM_ID = "ID";
 	private static final String COLUM_WEEK = "WEEK";
 	private static final String COLUM_FIRSTNAME = "FIRSTNAME";
 	private static final String COLUM_LASTNAME = "LASTNAME";
@@ -122,21 +123,23 @@ public class MyDatabase {
 	 */
 	public ArrayList<MemberInfo> getDataMember(){
 		ArrayList<MemberInfo> arrMemberInfo = new ArrayList<MemberInfo>();
+		
 		/*Lấy dữ tất cả dữ liệu trong bảng thành viên*/
-		String columns[] = new String[]{COLUM_FULLNAME} ;
+		String columns[] = new String[]{COLUM_FULLNAME,COLUM_ID} ;
 		Cursor c = db.query(TABLE_MEMBER, columns, null, null, null, null, null);
 		
 		/*Gán ID của các trường trong bảng*/
 		int rowFullName = c.getColumnIndex(COLUM_FULLNAME);
-		
+		int rowId = c.getColumnIndex(COLUM_ID);
 		/*Duyệt tất cả các phần tử để gán vào trong ArrayList*/
 		for(c.moveToFirst();!c.isAfterLast();c.moveToNext()){
 			MemberInfo a = new MemberInfo() ;
 			
 			/*Gán thông tin họ tên của thành viên*/
 			String fullName = c.getString(rowFullName) ;
+			String id = c.getString(rowId);
 			a.setFullName(fullName);
-					
+			a.setId(id);		
 			/*Gán từng Object MemberInfo vào ArrayList*/
 			arrMemberInfo.add(a);			
 		}
@@ -167,6 +170,7 @@ public class MyDatabase {
 			MemberInfo a = new MemberInfo();
 			a = arr.get(i);
 			ContentValues c = new ContentValues();
+			c.put(COLUM_ID, a.getId());
 			c.put(COLUM_FIRSTNAME, a.getFirstName());
 			c.put(COLUM_LASTNAME, a.getLastName());
 			c.put(COLUM_FULLNAME, a.getFullName());
@@ -233,6 +237,75 @@ public class MyDatabase {
 	}
 	
 	/**
+	 * Phương thức gán tên tuần và id tuần vào database với 2 đối vào là 2 arraylist string 
+	 */
+	public void creatDataWeek(ArrayList<String> week ,ArrayList<String> idWeek){
+		db.delete(TABLE_WEEK, null, null);
+		int lengh = week.size();
+		for(int i = 0 ; i < lengh ; i++ ){
+			ContentValues cv = new ContentValues();
+			cv.put(COLUM_ID, idWeek.get(i));
+			cv.put(COLUM_WEEK, week.get(i));
+			db.insert(TABLE_WEEK, null, cv);
+		}
+	}
+	
+	/**
+	 * Phương thức lấy danh sách các tuần
+	 */
+	public ArrayList<Week> getDataWeek(){
+		String colums[] = {COLUM_ID,COLUM_WEEK};
+		
+		Cursor c = db.query(TABLE_WEEK, colums, null, null, null, null, null);
+		int rowWeek = c.getColumnIndex(COLUM_WEEK);
+		int rowId = c.getColumnIndex(COLUM_ID);
+		ArrayList<Week> arr = new ArrayList<Week>();
+		for(c.moveToFirst() ; !c.isAfterLast() ; c.moveToNext() ){
+			Week w = new Week() ;
+			w.setWeek(c.getString(rowWeek));
+			w.setId(c.getString(rowId));
+			arr.add(w);
+		}
+		
+		return arr ;
+	}
+	
+	/**
+	 * 
+	 */
+	public String getIdWeek(String week){
+		ArrayList<Week> arr = getDataWeek();
+		int lengh = arr.size();
+		for(int i = 0 ; i < lengh ; i++ ){
+			Week a = arr.get(i);
+			if(a.getWeek().equalsIgnoreCase(week)){
+				return a.getId();
+			}
+		}
+		return null ;
+	}
+	
+	/**
+	 * Phương thức trả về id của thành viên có tên là fullName truyền vào
+	 */
+	public String getIdMember(String name){
+		String id = "" ;
+		String arrName[] = name.split(",");
+		ArrayList<MemberInfo> arr = new ArrayList<MemberInfo>();
+		arr = getDataMember();
+		for(int i = 0; i<arrName.length ; i++){
+			for(int j = 0 ; j<arr.size() ; j++){
+				MemberInfo a = arr.get(j);
+				if(arrName[i].equalsIgnoreCase(a.getFullName())){
+					id += a.getId() +"," ;
+					break ;
+				}
+			}
+		}
+		return id ;
+	}
+	
+	/**
 	 * trả về số tuần mới nhất (lớn nhất)
 	 */
 	public String newWeek(){
@@ -266,15 +339,15 @@ public class MyDatabase {
 					+ COLUM_WEEK + " TEXT, " + COLUM_FULLNAME + " TEXT, "
 					+ COLUM_MONEYBOUGHT + " FLOAT, " + COLUM_MONEYUSED
 					+ " FLOAT);");
-			arg0.execSQL("CREATE TABLE " + TABLE_MEMBER + " (" + COLUM_STT
-					+ " INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , "
-					+ COLUM_FIRSTNAME + " TEXT, " + COLUM_LASTNAME + " TEXT, "
-					+ COLUM_FULLNAME + " TEXT);");
+			arg0.execSQL("CREATE TABLE " + TABLE_MEMBER + " (" + COLUM_ID
+					+ " TEXT, " + COLUM_FIRSTNAME + " TEXT, " + COLUM_LASTNAME
+					+ " TEXT, " + COLUM_FULLNAME + " TEXT);");
 			arg0.execSQL("CREATE TABLE " + TABLE_INVOICE + " (" + COLUM_WEEK
 					+ " TEXT, " + COLUM_MEMBERBOUGHT + " TEXT, "
 					+ COLUM_TIMEBOUGHT + " TEXT, " + COLUM_MONEY
 					+ " FLOAT, " + COLUM_MEMBERLQ + " TEXT, "
 					+ COLUM_DESCRIPTION + " TEXT);");
+			arg0.execSQL("CREATE TABLE "+TABLE_WEEK+" ("+COLUM_WEEK+" TEXT, "+COLUM_ID+" TEXT);");
 		}
 
 		@Override

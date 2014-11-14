@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item 
+        android:state_pressed="true">
+        <shape
+            
+            android:shape="oval">
+            <solid android:color="#1ec921" />
+            <stroke 
+                android:color="#33bcbbbb"
+                android:width="4dp"/>
+
+
+        </shape>
+    </item>
     <item >
         <shape
-            android:shape="ring">
-            <solid android:color="#009966" />
-
-            <padding 
-                android:left="10dp"
-                android:right="10dp"
-                android:top="5dp"
-                android:bottom="5dp"/>
+            
+            android:shape="oval">
+            <solid android:color="#48dd1b" />
             <stroke 
-                android:color="#26f176"
-                android:width="0.5dp"/>
+                android:color="#A6bcbbbb"
+                android:width="4dp"/>
 
 
         </shape>

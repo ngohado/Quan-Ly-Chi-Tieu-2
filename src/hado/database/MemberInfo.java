@@ -7,10 +7,18 @@ package hado.database;
  *
  */
 public class MemberInfo {
+	
 	private String lastName ="";
 	private String firstName ="";
 	private String fullName ="";
-
+	private String id = "" ;
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	private MemberDetail memberDtail = new MemberDetail() ;
 	
 	public String getLastName() {

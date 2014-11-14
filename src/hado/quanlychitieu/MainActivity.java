@@ -1,7 +1,7 @@
 package hado.quanlychitieu;
 
 import hado.dangki.DangKiActivity;
-import hado.shopping.ShoppingActivity;
+import hado.menu.MenuActivity;
 
 import java.util.concurrent.ExecutionException;
 
@@ -59,7 +59,8 @@ public class MainActivity extends Activity {
 				
 			}else{ // không có kết nối mạng .chuyển về menu
 				showToast(R.string.load_old_data);
-				Intent i = new Intent(MainActivity.this, ShoppingActivity.class);
+				Intent i = new Intent(getApplicationContext(), MenuActivity.class);
+				finish();
 				startActivity(i);
 				
 			}

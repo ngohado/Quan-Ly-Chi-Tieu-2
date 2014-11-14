@@ -17,7 +17,7 @@ public class MyPagerAdapter extends FragmentPagerAdapter{
 	public MyPagerAdapter(FragmentManager fm) {
 		super(fm);
 		arrFragment = new ArrayList<Fragment>();
-		
+		arrFragment.add(new HomeFragment());
 		arrFragment.add(new InvoiceFragment());
 		arrFragment.add(new NhatKiFragment());
 		arrFragment.add(new DanhSachTVFragment());
